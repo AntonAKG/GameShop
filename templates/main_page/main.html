@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<h1>Hello World</h1>
+    <div class="catalog">
+        {% for el in game %}
+            <div class="game">
+                <a href="{% url 'game_detail' el.id %}">
+                    <img src="{{ el.main_image.url }}" alt="Game 1">
+                </a>
+
+                <div class="title">{{ el.title }}</div>
+                <div class="price">${{ el.price }}</div>
+            </div>
+        {% endfor %}
+
+
+    </div>
 {% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>{{ game.title }}</h2>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <a href="{{ game.main_image.url }}" data-lightbox="game" data-title="{{ game.title }}">
+          <img src="{{ game.main_image.url }}" alt="{{ game.title }}" class="img-fluid">
+        </a>
+      </div>
+      <div class="col-md-6">
+        <p>{{ game.description }}</p>
+        <p>Price: ${{ game.price }}</p>
+        {% if game.video %}
+          <video width="100%" height="auto" controls>
+            <source src="{{ game.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <h3>Галерея</h3>
+      <div class="row">
+        {% for image in gallery %}
+          <div class="col-md-4">
+            <a href="{{ image.image.url }}" data-lightbox="gallery" data-title="Зображення галереї">
+              <img src="{{ image.image.url }}" alt="Зображення галереї" class="img-fluid mt-3">
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="{% static 'path/to/lightbox.min.css' %}">
+  <script src="{% static 'path/to/lightbox.min.js' %}"></script>
+
+  <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    });
+  </script>
+{% endblock %}
+
