@@ -26,16 +26,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "Profile.User"
+# LOGIN_REDIRECT_URL = ''
+LOGIN_URL = 'login'
 # Application definition
 
 INSTALLED_APPS = [
+    "shop",
+    "Profile",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "shop.apps.ShopConfig"
 ]
 
 MIDDLEWARE = [
@@ -75,7 +79,7 @@ WSGI_APPLICATION = 'GameShop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'GameShop',
+        'NAME': 'Shop',
         'USER': 'postgres',
         'PASSWORD': '098ioplk',
         'HOST': 'localhost'
