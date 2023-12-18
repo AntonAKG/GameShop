@@ -15,3 +15,4 @@ class Game(models.Model):
 class GalleryGame(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='gallery_games')
     image = models.ImageField()
+

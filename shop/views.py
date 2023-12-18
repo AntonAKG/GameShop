@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 
 from .models import Game, GalleryGame
 
@@ -26,5 +26,16 @@ class DetailGameView(DetailView):
         context['title'] = 'about game'
         context['game'] = Game.objects.get(pk=game_id)
         context['gallery'] = GalleryGame.objects.filter(game_id=game_id)
+
+        return context
+
+
+class About(TemplateView):
+    template_name = 'main_page/about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(About, self).get_context_data()
+
+        context['title'] = 'About'
 
         return context

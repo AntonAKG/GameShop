@@ -27,8 +27,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = "Profile.User"
-# LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'home'
 # Application definition
 
 INSTALLED_APPS = [

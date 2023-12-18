@@ -31,7 +31,7 @@
           <a class="nav-link active" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Services</a>
@@ -52,12 +52,19 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Sign In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
-        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+          </li>
+        {% else %}
+          <!-- Show "Sign In" and "Sign Up" links for non-authenticated users -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </div>
